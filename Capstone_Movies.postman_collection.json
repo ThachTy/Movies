@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "574e5ac2-6d2b-46d8-adc9-d0687d543af7",
+		"name": "Capstone_Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33341909"
+	},
+	"item": [
+		{
+			"name": "NguoiDung",
+			"item": [
+				{
+					"name": "LayDanhSachNguoiDung Copy 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/NguoiDung/LayDanhSachNguoiDungPhanTrang?soTrang=1&soPhanTu=11",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"NguoiDung",
+								"LayDanhSachNguoiDungPhanTrang"
+							],
+							"query": [
+								{
+									"key": "soTrang",
+									"value": "1"
+								},
+								{
+									"key": "soPhanTu",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/NguoiDung/LayDanhSachNguoiDungPhanTrang?soTrang=1&soPhanTu=5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"NguoiDung",
+								"LayDanhSachNguoiDungPhanTrang"
+							],
+							"query": [
+								{
+									"key": "soTrang",
+									"value": "1"
+								},
+								{
+									"key": "soPhanTu",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimKiemNguoiDung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/NguoiDung/TimKiemNguoiDung?timKiem=demo",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"NguoiDung",
+								"TimKiemNguoiDung"
+							],
+							"query": [
+								{
+									"key": "timKiem",
+									"value": "demo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DangKy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ho_ten\":\"demo10\",\r\n    \"email\": \"animespenpai@gmail.com\",\r\n    \"mat_khau\": \"Passw0rd\",\r\n    \"so_dt\": \"0912345678\",\r\n    \"loaiNguoiDung\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/NguoiDung/DangKy"
+					},
+					"response": []
+				},
+				{
+					"name": "DangNhap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@email.com\",\r\n    \"mat_khau\": \"Passw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/NguoiDung/DangNhap"
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinNguoiDung",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE2OTcwNDAzLCJleHAiOjE3MTY5NzEzMDN9.7DS46xzhJhpqMxxvZLRb85a_9X7uMXkclxqL6IWYUAs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/NguoiDung/ThongTinNguoiDung"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatNguoiDung",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"ho_ten\": \"demo123\",\r\n    \"mat_khau\": \"Passw0rd\",\r\n      \"email\": \"demo@gmail.com\",\r\n      \"so_dt\": \"391234567\",\r\n      \"loaiNguoiDung\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/NguoiDung/CapNhatNguoiDung?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU3MDIwMjUwNDQiLCJpYXQiOjE3MTU3MDUyNTMsImV4cCI6MTcxNTcwNjE1M30.B81xffW-tKIvIKJd1ymFFwQ9zX7WLwnIICYPEOJ8iXY",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"NguoiDung",
+								"CapNhatNguoiDung"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU3MDIwMjUwNDQiLCJpYXQiOjE3MTU3MDUyNTMsImV4cCI6MTcxNTcwNjE1M30.B81xffW-tKIvIKJd1ymFFwQ9zX7WLwnIICYPEOJ8iXY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaNguoiDung",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTUyNDA0NDM5NjkiLCJpYXQiOjE3MTUzMjU2MDgsImV4cCI6MTcxNTMyNjUwOH0._TbCEVwvdAq--2BzOSULpqZWZQ3tGDIXY9RVJLtwHEM\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/NguoiDung/XoaNguoiDung?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"NguoiDung",
+								"XoaNguoiDung"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "{\n\nma_tai_khoan: string,\n\nho_ten?: string,\n\nemail: string,\n\nso_dt?: string,\n\nmat_khau: string,\n\nma_loai_nguoi_dung: \"user\" || \"admin\"\n\n}"
+		},
+		{
+			"name": "Phim",
+			"item": [
+				{
+					"name": "LayDanhSachPhim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{domain}}/Phim/LayDanhSachPhim"
+					},
+					"response": []
+				},
+				{
+					"name": "PhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/Phim/DanhSachPhimPhanTrang?soTrang=1&soPhanTu=5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Phim",
+								"DanhSachPhimPhanTrang"
+							],
+							"query": [
+								{
+									"key": "soTrang",
+									"value": "1"
+								},
+								{
+									"key": "soPhanTu",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimKiemPhim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/Phim/TimKiemPhim?timKiem=demo",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Phim",
+								"TimKiemPhim"
+							],
+							"query": [
+								{
+									"key": "timKiem",
+									"value": "demo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DangKy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_phim\":\"demo10\",\r\n    \"trailer\": \"animespenpai@gmail.com\",\r\n    \"hinh_anh\": \"Passw0rd\",\r\n    \"mo_ta\": \"0912345678\",\r\n    \"hot\": true,\r\n    \"ngay_khoi_chieu\": \"24/12/2022\",\r\n    \"danh_gia\": 10, \r\n    \"dang_chieu\": true,\r\n    \"sap_chieu\": false\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/Phim/DangKy"
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinPhim",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_phim\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/Phim/ThongTinPhim"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatPhim",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"ma_phim\": \"1716180470600\",\r\n    \"ten_phim\": \"Gozilla\",\r\n      \"trailer\": \"https://youtu.be/B2Jlyq_Tf3Y?feature=shared\",\r\n      \"hinh_anh\": \"https://th.bing.com/th/id/R.d6708a12f4d059f3e7e390dcaa17406e?rik=D243Uvho7b5jew&riu=http%3a%2f%2fwww.raymondyeung.com%2fbdcover%2fgodzilla_cover.jpg&ehk=OOB5KivJQ9uMWhNdgVp7GjFOqGRiVi8hkDJ1et8JBUk%3d&risl=&pid=ImgRaw&r=0\",\r\n      \"mo_ta\": \"phim hay\",\r\n      \"ngay_khoi_chieu\": \"20/05/2024\",\r\n      \"danh_gia\": 7,\r\n      \"hot\": true,\r\n      \"dang_chieu\": true,\r\n      \"sap_chieu\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Phim/CapNhatPhim?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU3NzM1NDU0NzUiLCJpYXQiOjE3MTYxNzk0OTQsImV4cCI6MTcxNjE4MDM5NH0.vWLX1fRMEkPM0SRksJR6OTLwXMdKjpeAg1geo8lw5g8",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Phim",
+								"CapNhatPhim"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU3NzM1NDU0NzUiLCJpYXQiOjE3MTYxNzk0OTQsImV4cCI6MTcxNjE4MDM5NH0.vWLX1fRMEkPM0SRksJR6OTLwXMdKjpeAg1geo8lw5g8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaPhim",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTUyNDA0NDM5NjkiLCJpYXQiOjE3MTUzMjU2MDgsImV4cCI6MTcxNTMyNjUwOH0._TbCEVwvdAq--2BzOSULpqZWZQ3tGDIXY9RVJLtwHEM\",\r\n \"hoTen\": \"demo123\",\r\n    \"matKhau\": \"demo123@gmail.com\",\r\n      \"email\": \"demo123@gmail.com\",\r\n      \"soDt\": \"0123456\",\r\n      \"loaiNguoiDung\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Phim/XoaPhim?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Phim",
+								"XoaPhim"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "{\n\nma_phim: string,\n\nten_phim: string,\n\ntrailer: string,\n\nhinh_anh: string,\n\nmo_ta: string,\n\nngay_khoi_chieu: date,\n\ndanh_gia: int,\n\nhot: boolean,\n\ndang_chieu: boolean,\n\nsap_chieu: boolean\n\n}"
+		},
+		{
+			"name": "Rap",
+			"item": [
+				{
+					"name": "LayDanhSachRap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{domain}}/Rap/LayDanhSachRap"
+					},
+					"response": []
+				},
+				{
+					"name": "PhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/Rap/DanhSachRapPhanTrang?soTrang=1&soPhanTu=5",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Rap",
+								"DanhSachRapPhanTrang"
+							],
+							"query": [
+								{
+									"key": "soTrang",
+									"value": "1"
+								},
+								{
+									"key": "soPhanTu",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimKiemRap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/Rap/TimKiemRap?timKiem=cgv",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Rap",
+								"TimKiemRap"
+							],
+							"query": [
+								{
+									"key": "timKiem",
+									"value": "cgv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LichChieu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/Rap/LichChieu?ma_rap=3",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Rap",
+								"LichChieu"
+							],
+							"query": [
+								{
+									"key": "ma_rap",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DangKy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_rap\":\"demo10\",\r\n    \"ma_cum_rap\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/Rap/DangKy"
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinRap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_rap\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/Rap/ThongTinRap"
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhat",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_rap\": \"1\",  \r\n    \"ten_rap\": \"Gozilla\",\r\n    \"ma_cum_rap\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Rap/CapNhatRap",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Rap",
+								"CapNhatRap"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU3MDIwMjUwNDQiLCJpYXQiOjE3MTU3MDUyNTMsImV4cCI6MTcxNTcwNjE1M30.B81xffW-tKIvIKJd1ymFFwQ9zX7WLwnIICYPEOJ8iXY",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaRap",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_rap\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/Phim/XoaPhim?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"Phim",
+								"XoaPhim"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MTU2MDEwODA4NzMiLCJpYXQiOjE3MTU2MDEwODAsImV4cCI6MTcxNTYwMTk4MH0.-oGxQjEWE01tVoNjLxenhH5FY8Nn7M114aDTHOB6tRw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "{\n\nma_rap: int,\n\nten_rap: string,\n\nma_cum_rap: int\n\n}"
+		},
+		{
+			"name": "DatVe",
+			"item": [
+				{
+					"name": "Them",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_ghe\":\"G004\",\r\n    \"ma_nguoi_dung\": \"2\",\r\n    \"ma_lich_chieu\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/DatVe/Them"
+					},
+					"response": []
+				},
+				{
+					"name": "Xoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ma_dat_ve\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{domain}}/DatVe/Xoa"
+					},
+					"response": []
+				}
+			],
+			"description": "{\n\nma_dat_ve: int,\n\nma_lich_chieu: int,\n\nma_nguoi_dung,\n\nma_ghe: varchar(50)\n\n}"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
