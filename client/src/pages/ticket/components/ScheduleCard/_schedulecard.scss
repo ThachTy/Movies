@@ -1,0 +1,40 @@
+@use "../../../../assets/style/sass/abstracts/abstracts" as ab;
+
+.schedule-card {
+  min-width: 160px;
+  width: 100%;
+  border: 2px solid var(--color-theme);
+  border-radius: 5px;
+  background: linear-gradient(
+    45deg,
+    rgba(254, 250, 162, 1) 0%,
+    rgba(243, 234, 40, 1) 50%
+  );
+  color: black;
+
+  .card-container {
+    padding: 1em;
+    margin-block: auto;
+
+    .card-schedule {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin-bottom: 0.75em;
+    }
+
+    .card-theater {
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 0.5em;
+    }
+
+    .card-time {
+      width: fit-content;
+      color: white;
+      background: crimson;
+      padding: 0.2em 0.5em;
+      border-radius: 3px;
+      margin-inline: 2px;
+    }
+  }
+}

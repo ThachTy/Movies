@@ -1,0 +1,59 @@
+#footer {
+  color: #999999;
+  background-color: #0f0f0f;
+}
+#footer .footer__top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-bottom: 2em;
+  gap: 1em;
+}
+#footer .footer__top .footer__nav li {
+  margin-bottom: 0.5em;
+}
+#footer .footer__top .footer__nav .nav-title {
+  font-weight: 500;
+  color: #fff;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+}
+#footer .footer__top .footer__nav .footer__socials {
+  display: flex;
+  gap: 0.5em;
+}
+#footer .footer__top .footer__nav .footer__socials a {
+  width: 54px;
+  height: 54px;
+  background-color: #262626;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#footer .footer__top .footer__nav .footer__socials a .fa-brands {
+  font-size: 1.4em;
+  color: #999999;
+}
+#footer .footer__bottom {
+  border-top: 1px solid rgba(99, 99, 99, 0.5);
+  padding-top: 1em;
+}
+#footer .footer__bottom .footer-term {
+  display: flex;
+  justify-content: space-between;
+}
+#footer .footer__bottom p {
+  padding-inline: 1em;
+  font-size: 0.9em;
+}
+#footer .footer__bottom p:nth-of-type(2) {
+  border-left: 1px solid rgba(128, 128, 128, 0.5);
+  border-right: 1px solid rgba(128, 128, 128, 0.5);
+}
+#footer :is(a, p, .fa-brands) {
+  transition: 0.25s all linear;
+}
+#footer :is(a, p, .fa-brands):hover {
+  color: #fff !important;
+}/*# sourceMappingURL=footer.css.map */

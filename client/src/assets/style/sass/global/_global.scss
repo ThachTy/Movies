@@ -1,0 +1,38 @@
+@use "../abstracts/abstracts" as ab;
+
+body {
+  font-size: 16px;
+  min-width: 100%;
+  color: var(--color-theme);
+  background-color: var(--background-theme);
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  @include ab.mixin-btn;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+body > * ::selection {
+  color: #fff;
+  background-color: crimson;
+}
+
+body,
+html {
+  scroll-behavior: smooth;
+}

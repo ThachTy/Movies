@@ -1,0 +1,95 @@
+/*** The new CSS Reset - version 1.2.0 (last updated 23.7.2021) ***/
+/* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  Remove list styles (bullets/numbers)
+  in case you use it with normalize.css
+*/
+ol,
+ul {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* Removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+:root {
+  --color-theme: $text-1;
+  --color-primary: crimson;
+  --background-theme: $bg-1;
+  --color-white-1: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-theme: white;
+    --background-theme: black;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-theme: black;
+    --background-theme: white;
+  }
+}
+
+body {
+  font-size: 16px;
+  min-width: 100%;
+  color: var(--color-theme);
+  background-color: var(--background-theme);
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  outline: none;
+  font-size: 1em;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+body > * ::selection {
+  color: #fff;
+  background-color: crimson;
+}
+
+body,
+html {
+  scroll-behavior: smooth;
+}/*# sourceMappingURL=index.css.map */

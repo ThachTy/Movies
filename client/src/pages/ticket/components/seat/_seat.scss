@@ -1,0 +1,26 @@
+@use "../../../../assets/style/sass/abstracts/abstracts" as ab;
+
+// normal : black
+// booked: red
+// choosed: white
+
+.btn-seat {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  background-color: ab.$background-seat-none;
+  color: ab.$color-seat-none;
+  border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+
+  &.choosed {
+    background-color: ab.$background-seat-choosed;
+    color: ab.$color-seat-choosed;
+  }
+
+  &.booked {
+    background-color: ab.$background-seat-booked;
+    color: ab.$color-seat-booked;
+  }
+}

@@ -1,0 +1,151 @@
+@use "../../assets/style/sass/abstracts/abstracts" as ab;
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
+#detail-movie {
+  /* Top */
+  .detail__top {
+    width: inherit;
+    width: inherit;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    &:hover {
+      .detail-name {
+        top: 20vh;
+      }
+      .detail__content {
+        bottom: 2em;
+      }
+    }
+    .detail-img {
+      width: 100%;
+      height: 100vh;
+    }
+    .detail-name {
+      unicode-bidi: isolate;
+      font-family: "Orbitron", sans-serif;
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      font-size: ab.$fs-title;
+      font-weight: 900;
+      padding-inline: 1em;
+      letter-spacing: 0.1em;
+      text-wrap: nowrap;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.25s 0.1s all linear;
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .detail__content {
+      width: 60vw;
+      height: fit-content;
+      position: absolute;
+      bottom: -100%;
+      left: 50%;
+      z-index: 2;
+      padding: 0.7em;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: ab.$radius-1;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      transition: 0.25s 0.3s all linear;
+
+      .content__left {
+        width: 100%;
+        min-height: 150px;
+        border-radius: ab.$radius-2 0 0 ab.$radius-2;
+        overflow: hidden;
+        .content-video {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .content__right {
+      width: 100%;
+      height: 100%;
+      font-size: ab.$fs-text;
+      flex-grow: 1;
+      background-color: #000;
+      color: ab.$text-1;
+      text-align: start;
+      padding: 0.5em 0.5em 0.5em 1em;
+      border-radius: 0 ab.$radius-2 ab.$radius-2 0;
+      position: relative;
+
+      .btn-buy-ticket {
+        padding: 0.2em 0.7em;
+        color: #000;
+        background-color: ab.$color-ticket;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .theater {
+    width: auto;
+    height: calc(100dvh - ab.$height-header);
+    position: fixed;
+    top: ab.$height-header;
+    right: calc(5px - 10vw);
+    background-color: ab.$color-ticket;
+    transition: right 0.1s linear;
+
+    &.show {
+      right: 0;
+    }
+
+    .btn-buy-ticket {
+      position: absolute;
+      bottom: min(1em, 5vw);
+      left: min(-50%, -50px);
+      padding: 0.5em 1em;
+      text-align: center;
+      font-weight: 700;
+      background-color: ab.$color-ticket;
+      color: ab.$text-2;
+      text-wrap: nowrap;
+    }
+    .theater-list {
+      width: inherit;
+      height: inherit;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 0.5em;
+      .theater-link {
+        margin-bottom: 0.5em;
+        padding: 3px;
+        font-weight: 700;
+        color: ab.$text-2;
+        z-index: 3;
+        .theater-logo {
+          width: 7vw;
+          height: 7vw;
+          min-width: 50px;
+          min-height: 50px;
+          box-shadow: 0 0 10px 0 black;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  /* Bottom */
+}

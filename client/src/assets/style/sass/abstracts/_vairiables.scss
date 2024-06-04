@@ -1,0 +1,38 @@
+$text-1: #fff;
+$text-2: #000;
+$bg-1: #1e1e1e;
+$bg-2: #fff;
+$color-primary: #fe4938;
+$color-ticket: #f3ea28;
+
+$color-seat-none: #fff;
+$background-seat-none: #000;
+
+$color-seat-booked: #fff;
+$background-seat-booked: #fe4938;
+
+$color-seat-choosed: #000;
+$background-seat-choosed: #fff;
+
+$radius-1: 5px;
+$radius-2: 0.2em;
+$fs-title: 2.5em;
+$fs-text: clamp(10px, 14px, 1em);
+$height-header: 90px;
+
+:root {
+  --color-theme: $text-1;
+  --color-primary: crimson;
+  --background-theme: $bg-1;
+  --color-white-1: #fff;
+
+  @media (prefers-color-scheme: dark) {
+    --color-theme: white;
+    --background-theme: black;
+  }
+
+  @media (prefers-color-scheme: light) {
+    --color-theme: black;
+    --background-theme: white;
+  }
+}

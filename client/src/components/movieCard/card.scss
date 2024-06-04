@@ -1,0 +1,64 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  &:hover {
+    cursor: pointer;
+    .card-img {
+      transform: scale(1.1);
+      object-position: center;
+    }
+
+    .card-heading {
+      color: var(--color-primary);
+    }
+
+    :is(.card-content) {
+      top: 0 !important;
+      opacity: 1 !important;
+      pointer-events: all;
+    }
+  }
+
+  .card-heading {
+    height: 100%;
+    padding-block: 3px;
+    width: max-content;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-weight: 700;
+    letter-spacing: -0.2em;
+  }
+
+  .card-poster {
+    position: relative;
+    margin-left: auto;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    flex-grow: 1;
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.2s all linear;
+    }
+    .card-content {
+      background: linear-gradient(45deg, rgb(0, 0, 0, 0.5) 70%, transparent);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      transition: 0.2s all linear;
+      opacity: 0;
+
+      .btn-details {
+        color: var(--color-white-1);
+      }
+    }
+  }
+}

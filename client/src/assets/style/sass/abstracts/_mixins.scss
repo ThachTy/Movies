@@ -1,0 +1,11 @@
+@mixin btn {
+  padding: 0.5em 1em;
+  outline: none;
+  font-size: 1em;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,67 @@
+@use "../../assets/style/sass/abstracts/abstracts" as ab;
+@use "./components/ScheduleCard/schedulecard";
+@use "./components/seat/seat";
+@use "./components/payment/payment";
+
+$url: attr(data-image);
+
+.ticket {
+  min-width: 100%;
+  height: auto;
+
+  .ticket__filter {
+    background-color: ab.$color-primary;
+    padding: 1em;
+  }
+
+  .seat {
+    width: 100%;
+    height: max(80dvh, 500px);
+    display: block;
+    background: #f4cc9b;
+    padding: 1em;
+
+    .seat__content {
+      width: 100%;
+      display: grid;
+      gap: 5px;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      grid-template-rows: repeat(8, 1fr);
+      padding: 1em;
+    }
+
+    .btn-confirmation {
+      max-width: 300px;
+      background-color: var(--color-theme);
+      color: var(--background-theme);
+      display: block;
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .seat__insctruct {
+      @include ab.mixin-flex-center;
+      flex-direction: row;
+      padding-bottom: 0.5em;
+      gap: 0.5em;
+      span {
+        padding: 0.5em;
+        display: block;
+        font-weight: 500;
+      }
+      .seat-none,
+      .seat-vip {
+        background-color: black;
+        color: white;
+      }
+      .seat-choosed {
+        color: ab.$color-seat-choosed;
+        background-color: ab.$background-seat-choosed;
+      }
+      .seat-booked {
+        color: ab.$color-seat-booked;
+        background-color: ab.$background-seat-booked;
+      }
+    }
+  }
+}
