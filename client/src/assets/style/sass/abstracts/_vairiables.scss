@@ -17,14 +17,18 @@ $background-seat-choosed: #fff;
 $radius-1: 5px;
 $radius-2: 0.2em;
 $fs-title: 2.5em;
-$fs-text: clamp(10px, 14px, 1em);
-$height-header: 90px;
+$fs-text: 14px;
+$height-header: fit-content;
 
 :root {
   --color-theme: $text-1;
-  --color-primary: crimson;
+  --color-primary: #fe4938;
   --background-theme: $bg-1;
   --color-white-1: #fff;
+  --fs-text: 1rem;
+  --height-header: 90px;
+  --padding-inline: 2em;
+  --padding-block: 0.5em;
 
   @media (prefers-color-scheme: dark) {
     --color-theme: white;
@@ -34,5 +38,20 @@ $height-header: 90px;
   @media (prefers-color-scheme: light) {
     --color-theme: black;
     --background-theme: white;
+  }
+
+  @media screen and (max-width: 992px) {
+    --fs-text: 14px;
+    --padding-inline: 1.5em;
+  }
+
+  @media screen and (max-width: 768px) {
+    --fs-text: 12px;
+    --padding-inline: 2em;
+  }
+
+  @media screen and (max-width: 500px) {
+    --fs-text: 10px;
+    --padding-inline: 2em;
   }
 }

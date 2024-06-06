@@ -123,6 +123,7 @@ export class UserController {
     let { token } = body;
     let codedToken = verifyToken(token);
 
+    console.log(codedToken['id']);
     // Kiểm tra token
     if (token === '' || codedToken === null || codedToken === null)
       return responseCreatetor(res, 200, 'Token không hợp lệ');

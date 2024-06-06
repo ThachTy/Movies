@@ -2,7 +2,7 @@ import "./footer.css";
 function Footer() {
   return (
     <footer id="footer" className="min-w-full">
-      <div className="container py-4 px-2">
+      <div className="container">
         <div className="footer__top">
           {/* Home */}
           <ul className="footer__nav">
@@ -106,7 +106,7 @@ function Footer() {
         </div>
 
         <div className="footer__bottom flex items-center justify-between">
-          <p>@2023 streamvib. All Rights Reserved</p>
+          <p>@{new Date().getFullYear()} streamvib. All Rights Reserved</p>
           <div className="footer-term ">
             <p>Terms of Use</p>
             <p>Privacy Policy</p>

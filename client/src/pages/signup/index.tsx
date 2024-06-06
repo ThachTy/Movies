@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Link } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,8 +13,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm, Controller } from 'react-hook-form';
 import { EMAIL_REGEX, PASSWORD_REGEX, PHONE_REGEX } from '@base/constant'
 import { signup } from '@config/api/user';
-import { setLocalStorage } from '@base/index';
+import { setSessionStorage } from '@base/index';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setNoficationAction } from '@config/reducer/noficationReducer';
+import { useEffect } from 'react';
 
 
 
@@ -38,20 +40,29 @@ const defaultTheme = createTheme();
 export default function SignUp() {
     const { handleSubmit, control, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        document.querySelector("#singup-form")?.scrollIntoView();
+    }, []
+    )
+
     const onSubmit = async (data: any) => {
         try {
             let response = await signup(data).catch(error => {
                 throw error;
             }).then(res => {
-                return res;
-            })
-
-            if (response.token) {
-                setLocalStorage(response.token, 'login');
+                setSessionStorage(response.token, 'login');
+                dispatch(setNoficationAction({ isOpen: true, message: response.message, error: false }));
                 setTimeout(() => {
                     navigate("/")
                 }, 2000)
-            }
+                return res
+            }).catch((err) => {
+                console.log(err)
+                let { message } = err.response.data;
+                dispatch(setNoficationAction({ isOpen: true, message: message, error: true }));
+            })
 
         } catch (error) {
             console.error(error)
@@ -61,7 +72,7 @@ export default function SignUp() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
+            <Container id="singup-form" component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
                     sx={{

@@ -1,20 +1,19 @@
-import { useState, MouseEvent, useEffect } from 'react'
-
-import { Link } from "react-router-dom";
 import logo from "@assets/image/icon-popcorn-svgrepo-com copy.svg";
-import "./header.css";
+import { Link, NavLink } from "react-router-dom";
+import { useState, MouseEvent, useEffect } from 'react'
 import { Avatar, Button, MenuItem, Menu } from '@mui/material';
-import { getLocalStorage } from '@base/index';
+/* */
 import { detailsUser } from '@config/api/user';
-import { LOGIN_STORAGE_KEY } from '@base/constant'
+import { getSessionStorage } from '@base/index';
+import { LOGIN_STORAGE_KEY } from '@base/constant';
+import "./header.css";
 
 function Header() {
   const [user, setUser] = useState<any>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-
-  let token = getLocalStorage(LOGIN_STORAGE_KEY);
+  let token = getSessionStorage(LOGIN_STORAGE_KEY);
 
   useEffect(() => {
     const fetchDetailUser = async () => {
@@ -26,16 +25,18 @@ function Header() {
   }, [token]
   )
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
+  const handleOpenMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   }
+
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem('login');
-    location.href = "/";
+    sessionStorage.removeItem('login');
+    window.location.href = "/login";
   }
 
 
@@ -48,38 +49,49 @@ function Header() {
               <img className="logo-img" src={logo} alt="logo" />
             </Link>
           </div>
-          <nav>
-            <ul className="navs">
-              <li className="navs-items">
-                <Link className="navs-link active" to={"/"}>
-                  Buy Tickets
-                </Link>
-              </li>
-              <li className="navs-items">
-                <Link className="navs-link" to={"/"}>
-                  Movies & Shows
-                </Link>
-              </li>
-              <li className="navs-items">
-                <Link className="navs-link" to={"/"}>
-                  Support
-                </Link>
-              </li>
-              <li className="navs-items">
-                <Link className="navs-link" to={"/"}>
-                  Subscriptions
-                </Link>
-              </li>
-              <li className="navs-items">
-                <Link className="navs-link" to={"/login"}>
-                  Login
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          {/* navs */}
+          <ul id="navs" className="navs">
+            <li className="navs-items">
+              <NavLink className={({ isActive }) => {
+                return isActive ? "navs-link active" : "navs-link";
+              }} to={"/ticket"}>
+                <i className="fa-solid fa-ticket mr-1"></i>  Buy Tickets
+              </NavLink>
+            </li>
+            <li className="navs-items">
+              <NavLink className={({ isActive }) => {
+                return isActive ? "navs-link active" : "navs-link";
+              }} to={"/"}>
+                <i className="fa-solid fa-ticket mr-1"></i>  Movies & Shows
+              </NavLink>
+            </li>
 
-          <div className="footer__login">
-            <Button onClick={e => handleClick(e)}>
+            <li className="navs-items">
+              <NavLink className={({ isActive }) => {
+                return isActive ? "navs-link active" : "navs-link";
+              }} to={"/suppport"}>
+                <i className="fa-solid fa-headset mr-1"></i>  Support
+              </NavLink>
+            </li>
+            <li className="navs-items">
+              <NavLink className={({ isActive }) => {
+                return isActive ? "navs-link active" : "navs-link";
+              }} to={"/signup"}>
+                <i className="fa-solid fa-user-plus mr-1"></i>Subscriptions
+              </NavLink>
+            </li>
+            {!user && <li className="navs-items">
+              <NavLink className={({ isActive }) => {
+                return isActive ? "navs-link active" : "navs-link";
+              }} to={"/login"}>
+                <i className="fa-regular fa-address-card mr-1"></i>  Login
+              </NavLink>
+            </li>}
+          </ul>
+
+          {/* login */}
+          {user && <div className="header__login">
+            <Button onClick={e => handleOpenMenu(e)}>
               <Avatar src={user ? user.avatar : null}>
               </Avatar>
             </Button>
@@ -121,8 +133,14 @@ function Header() {
               <MenuItem><i className="fa-solid fa-ticket mr-2"></i>Ticket</MenuItem>
               <MenuItem onClick={handleLogOut}> <i className="fa-solid fa-right-from-bracket mr-2"></i>Log Out</MenuItem>
             </Menu>
-          </div>
+          </div>}
         </div>
+        <button className="nav-bar" onClick={() => {
+          document.querySelector("#navs")?.classList.toggle("show");
+        }
+        } type="button">
+          <i className="fa-solid fa-bars"></i>
+        </button>
       </div>
     </header >
   );

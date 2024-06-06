@@ -12,6 +12,10 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
+  .nav-bar {
+    display: none;
+  }
+
   .header__content {
     height: ab.$height-header;
     display: flex;
@@ -20,14 +24,14 @@
     padding-block: 1em;
 
     .header__logo {
-      width: 150px;
+      min-width: 60px;
       height: 60px;
 
       .logo-img {
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: fill;
       }
     }
 
@@ -35,25 +39,70 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: row;
       gap: 0.5em;
       padding: 10px;
-      background-color: var(--color-theme);
+      background-color: var(--background-theme);
       border-radius: 7px;
+      transition: all 0.25s linear;
 
       .navs-items {
+        width: 100%;
+        height: 100%;
         .navs-link {
-          height: 100%;
           padding: 0.3em 0.7em;
           display: block;
-          color: var(--background-theme);
-          font-size: 0.9em;
+          color: var(--color-theme);
+          font-size: var(--fs-text);
           font-weight: 500;
           border-radius: 5px;
-
+          text-wrap: nowrap;
+          transition: padding 0.25s linear;
           &.active {
-            background-color: crimson;
-            color: #ffffff;
+            background-color: #fff;
+            color: var(--color-primary);
           }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-inline: auto;
+      padding-inline: 2em;
+      .header__login {
+        display: none;
+      }
+      .nav-bar {
+        display: block;
+        color: var(--color-theme);
+      }
+
+      .navs {
+        width: 100vw;
+        position: absolute;
+        flex-direction: column;
+        top: 100%;
+        left: -100%;
+        align-items: start;
+        height: auto;
+        opacity: 0;
+        z-index: -1;
+        line-height: 1.5em;
+        border-radius: 0;
+
+        :is(.navs-link:hover) {
+          padding-left: 2em;
+          color: var(--color-theme) !important;
+          background-color: var(--color-primary) !important;
+        }
+        &.show {
+          left: 0;
+          opacity: 1;
         }
       }
     }

@@ -1,8 +1,6 @@
-import React from "react";
-import Carousel from "@components/carousel";
-
 import { Link } from "react-router-dom";
-
+import Carousel from "@components/carousel";
+import './moviesTemplate.css'
 type Props = {
   heading: string;
   list: object[];
@@ -13,9 +11,9 @@ type Props = {
 function MoviesTemplate({ heading, list, delay, reverse }: Props) {
 
   return (
-    <div className="w-full h-fit py-[1.5em] pl-[5em]">
+    <div className="movies-template">
       <Link to="/">
-        <h1 className="text-[1.5em] pb-2 font-semibold ">
+        <h1 className="movies-heading ">
           {heading} <span>{">"}</span>
         </h1>
       </Link>

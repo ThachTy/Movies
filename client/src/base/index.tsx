@@ -18,7 +18,3 @@ export const getSessionStorage = (valueName: string) => {
     let data = sessionStorage.getItem(valueName);
     return data ? JSON.parse(data) : null
 }
-
-export const uniqueArray = (list: Array) => {
-
-}

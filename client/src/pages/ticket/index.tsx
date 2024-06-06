@@ -10,7 +10,7 @@ import { getSessionStorage } from '@base/index'
 import { TICKET_STORAGE_KEY } from '@base/constant'
 import ScheduleCard from './components/ScheduleCard'
 import Seat from './components/seat';
-import { TicketType, ticketAction, TicketStateType } from '@config/reducer/ticketReducer'
+import { TicketType, ticketAction } from '@config/reducer/ticketReducer'
 
 import './ticketpage.css'
 import Payment from './components/payment';

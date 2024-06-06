@@ -1,13 +1,15 @@
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { TicketType } from '@config/reducer/ticketReducer'
-import { getLocalStorage } from '@src/base'
+import { getSessionStorage } from '@src/base'
 import { LOGIN_STORAGE_KEY } from '@src/base/constant'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { setNoficationAction } from '@config/reducer/noficationReducer'
 
 import { datve } from '@config/api/datve'
 function Payment() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const ticket = useSelector((state: any) => state.ticketReducer as TicketType)
 
     const renderSeatForPayment = (seat: any, price: number) => {
@@ -22,13 +24,24 @@ function Payment() {
     }
 
     const handelRequestPayment = async () => {
-        const token = getLocalStorage(LOGIN_STORAGE_KEY);
-        !token && navigate('/login');
+        const token = getSessionStorage(LOGIN_STORAGE_KEY);
 
-        let response = await datve({ token, danh_sach_ma_ghe: ticket.seat, ma_lich_chieu: ticket.showtime?.toString() })
+        if (!token) {
+            dispatch(setNoficationAction({ isOpen: true, message: "Bạn chưa đăng nhập", error: true }))
+            navigate('/login');
+        }
 
-        window.location.reload();
-        console.log(response)
+        await datve({ token, danh_sach_ma_ghe: ticket.seat, ma_lich_chieu: ticket.showtime?.toString() })
+            .then((res: any) => {
+                dispatch(setNoficationAction({ isOpen: true, message: res.message, error: false }))
+                setTimeout(() => {
+                    // window.location.reload();
+                }, 2000)
+            }
+            ).catch(err => {
+                let { message } = err.response.data;
+                dispatch(setNoficationAction({ isOpen: true, message, error: true }))
+            })
     }
 
     return (
@@ -60,7 +73,6 @@ function Payment() {
                 </table>
 
                 <button className='btn btn-payment' disabled={(ticket.seat ?? []).length > 0 ? false : true} onClick={handelRequestPayment} >Payment Ticket</button>
-
             </div>
         </div >
     )

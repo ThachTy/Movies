@@ -6,6 +6,7 @@ import * as express from 'express';
 
 async function bootstLichChieu() {
   const app = await NestFactory.create(AppModule);
+  const PORT = process.env.PORT_SERVER;
 
   app.enableCors();
   app.use(express.static('.'));
@@ -19,6 +20,8 @@ async function bootstLichChieu() {
   // Áp dụng transform validate toàn cuc
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
-  await app.listen(5000);
+  await app.listen(PORT, () => {
+    console.log(`Connecting server with PORT :  ${PORT}`);
+  });
 }
 bootstLichChieu();

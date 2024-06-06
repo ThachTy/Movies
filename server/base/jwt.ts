@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import { decode } from 'punycode';
 
 const { JWT_SECRECT_KEY } = process.env;
 
@@ -8,12 +9,10 @@ export const createToken = (data, exp) => {
   });
 };
 
-export const verifyToken = (token) => {
-  let codedToken = jwt.verify(token, JWT_SECRECT_KEY, (err, decoded) => {
-    if (err) return null;
+export const verifyToken = (token: string) => {
+  return jwt.verify(token, JWT_SECRECT_KEY, (error, decoded) => {
+    if (error) return error;
 
     return decoded;
   });
-
-  return codedToken;
 };

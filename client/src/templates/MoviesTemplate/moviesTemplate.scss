@@ -1,0 +1,11 @@
+.movies-template {
+  min-width: 100%;
+  margin-bottom: var(--fs-text);
+  padding-block: max(var(--fs-text) * 2);
+  .movies-heading {
+    padding-left: 2em;
+    font-size: max(var(--fs-text) * 1.7);
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+}

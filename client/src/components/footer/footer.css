@@ -1,6 +1,10 @@
 #footer {
   color: #999999;
   background-color: #0f0f0f;
+  font-size: var(--fs-text);
+}
+#footer .container {
+  padding: 2em 1em;
 }
 #footer .footer__top {
   width: 100%;
@@ -23,8 +27,8 @@
   gap: 0.5em;
 }
 #footer .footer__top .footer__nav .footer__socials a {
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   background-color: #262626;
   border-radius: 5px;
   display: flex;
@@ -43,9 +47,11 @@
   display: flex;
   justify-content: space-between;
 }
+#footer .footer__bottom .footer-term p {
+  padding-inline: 5px;
+}
 #footer .footer__bottom p {
-  padding-inline: 1em;
-  font-size: 0.9em;
+  font-size: var(--fs-text);
 }
 #footer .footer__bottom p:nth-of-type(2) {
   border-left: 1px solid rgba(128, 128, 128, 0.5);
@@ -55,5 +61,5 @@
   transition: 0.25s all linear;
 }
 #footer :is(a, p, .fa-brands):hover {
-  color: #fff !important;
+  color: var(--color-primary) !important;
 }/*# sourceMappingURL=footer.css.map */

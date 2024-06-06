@@ -128,7 +128,7 @@ export class UserService {
   async dangNhap(res, email, mat_khau): Promise<unknown> {
     let token = null;
     let message = '';
-
+    let code = 400;
     try {
       let user = await this._prisma.nguoiDung
         .findFirst({
@@ -142,8 +142,10 @@ export class UserService {
 
       if (!user || !checkPassword) {
         message = 'Thông tin đăng nhập không đúng';
+        code = 401;
       } else {
         message = 'Đăng nhập Thành công';
+        code = 200;
         token = user && createToken({ id: user.ma_nguoi_dung }, '1h');
 
         await this._mail.sendMail(
@@ -154,9 +156,10 @@ export class UserService {
       }
     } catch (error) {
       console.error(error);
+      code = 400;
       message = 'Đăng nhập không thành công';
     } finally {
-      return responseCreatetor(res, 200, message, {}, token);
+      return responseCreatetor(res, code, message, {}, token);
     }
   }
   //#endregion
@@ -165,7 +168,7 @@ export class UserService {
   async dangKy(res, newUser): Promise<unknown> {
     let token = null;
     let message = '';
-
+    let code = 400;
     try {
       let user = await this._prisma.nguoiDung.findFirst({
         where: { email: newUser.email },
@@ -173,6 +176,7 @@ export class UserService {
 
       if (user) {
         message = 'Email đã tồn tại';
+        code = 400;
         return;
       } else {
         let passwordCrypted = await hashCrypt(newUser.mat_khau, ROUND_SALT);
@@ -192,6 +196,7 @@ export class UserService {
           })
           .then(async (res) => {
             message = 'Đăng Ký thành công';
+            code = 200;
             token =
               newUser && createToken({ id: newUser.ma_nguoi_dung }, '15m');
             await this._mail.sendMail(
@@ -208,8 +213,9 @@ export class UserService {
     } catch (error) {
       console.error(error);
       message = 'Đăng ký không thành công';
+      code = 400;
     } finally {
-      return responseCreatetor(res, 200, message, {}, token);
+      return responseCreatetor(res, code, message, {}, token);
     }
   }
   //#endregion

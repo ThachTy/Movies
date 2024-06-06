@@ -17,9 +17,9 @@ function Carousel(props: any) {
       navigation={true}
       spaceBetween={20}
       breakpoints={{
-        500: { slidesPerView: 1 },
-        768: { slidesPerView: 3 },
-        1200: { slidesPerView: 5 },
+        500: { slidesPerView: 3 },
+        768: { slidesPerView: 4 },
+        992: { slidesPerView: 5 },
       }}>
       {
         props.list && props.list.length > 0 && props.list.map((item: any, index: number) => {

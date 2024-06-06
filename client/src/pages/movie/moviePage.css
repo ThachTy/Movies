@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 :root {
   --color-theme: $text-1;
-  --color-primary: crimson;
+  --color-primary: #fe4938;
   --background-theme: $bg-1;
   --color-white-1: #fff;
+  --fs-text: 1rem;
+  --height-header: 90px;
+  --padding-inline: 2em;
+  --padding-block: 0.5em;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,6 +21,24 @@
     --background-theme: white;
   }
 }
+@media screen and (max-width: 992px) {
+  :root {
+    --fs-text: 14px;
+    --padding-inline: 1.5em;
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    --fs-text: 12px;
+    --padding-inline: 2em;
+  }
+}
+@media screen and (max-width: 500px) {
+  :root {
+    --fs-text: 10px;
+    --padding-inline: 2em;
+  }
+}
 
 #detail-movie {
   /* Top */
@@ -24,30 +46,38 @@
 }
 #detail-movie .detail__top {
   width: inherit;
-  width: inherit;
+  height: calc(100vh - var(--height-header));
   position: relative;
   overflow: hidden;
   z-index: 0;
 }
 #detail-movie .detail__top:hover .detail-name {
-  top: 20vh;
+  top: 1em;
 }
 #detail-movie .detail__top:hover .detail__content {
-  bottom: 2em;
+  bottom: 1em;
 }
 #detail-movie .detail__top .detail-img {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 350px;
+  object-fit: cover;
+  object-position: top center;
+}
+@media screen and (max-width: 768px) {
+  #detail-movie .detail__top .detail-img {
+    object-fit: contain;
+  }
 }
 #detail-movie .detail__top .detail-name {
   unicode-bidi: isolate;
   font-family: "Orbitron", sans-serif;
   position: absolute;
-  top: -70px;
+  top: -50%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  font-size: 2.5em;
+  font-size: max(var(--fs-text) * 2);
   font-weight: 900;
   padding-inline: 1em;
   letter-spacing: 0.1em;
@@ -62,7 +92,7 @@
   width: 60vw;
   height: fit-content;
   position: absolute;
-  bottom: -100%;
+  bottom: -200%;
   left: 50%;
   z-index: 2;
   padding: 0.7em;
@@ -91,7 +121,7 @@
 #detail-movie .detail__top .content__right {
   width: 100%;
   height: 100%;
-  font-size: clamp(10px, 14px, 1em);
+  font-size: var(--fs-text);
   flex-grow: 1;
   background-color: #000;
   color: #fff;
@@ -108,11 +138,11 @@
   font-weight: 500;
 }
 #detail-movie .theater {
-  width: auto;
-  height: calc(100dvh - 90px);
+  min-width: 100px;
+  height: calc(100dvh - var(--height-header));
   position: fixed;
-  top: 90px;
-  right: calc(5px - 10vw);
+  top: var(--height-header);
+  right: -100px;
   background-color: #f3ea28;
   transition: right 0.1s linear;
 }
@@ -138,19 +168,17 @@
   align-items: center;
   justify-content: center;
   padding-inline: 0.5em;
+  gap: 1em;
 }
 #detail-movie .theater .theater-list .theater-link {
-  margin-bottom: 0.5em;
-  padding: 3px;
+  display: block;
   font-weight: 700;
   color: #000;
   z-index: 3;
 }
 #detail-movie .theater .theater-list .theater-link .theater-logo {
-  width: 7vw;
-  height: 7vw;
-  min-width: 50px;
-  min-height: 50px;
+  width: 70px;
+  height: 70px;
   box-shadow: 0 0 10px 0 black;
   border-radius: 100%;
   object-fit: cover;

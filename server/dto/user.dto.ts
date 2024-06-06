@@ -35,7 +35,6 @@ export class UserDto {
   })
   ma_loai_nguoi_dung?: string;
 
-  @IsString()
   @ApiProperty({
     type: 'string',
     name: 'avatar',

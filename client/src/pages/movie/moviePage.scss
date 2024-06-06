@@ -5,32 +5,39 @@
   /* Top */
   .detail__top {
     width: inherit;
-    width: inherit;
+    height: calc(100vh - var(--height-header));
     position: relative;
     overflow: hidden;
     z-index: 0;
 
     &:hover {
       .detail-name {
-        top: 20vh;
+        top: 1em;
       }
       .detail__content {
-        bottom: 2em;
+        bottom: 1em;
       }
     }
     .detail-img {
       width: 100%;
-      height: 100vh;
+      height: 100%;
+      min-height: 350px;
+      object-fit: cover;
+      object-position: top center;
+
+      @media screen and (max-width: 768px) {
+        object-fit: contain;
+      }
     }
     .detail-name {
       unicode-bidi: isolate;
       font-family: "Orbitron", sans-serif;
       position: absolute;
-      top: -70px;
+      top: -50%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
-      font-size: ab.$fs-title;
+      font-size: max(var(--fs-text) * 2);
       font-weight: 900;
       padding-inline: 1em;
       letter-spacing: 0.1em;
@@ -46,7 +53,7 @@
       width: 60vw;
       height: fit-content;
       position: absolute;
-      bottom: -100%;
+      bottom: -200%;
       left: 50%;
       z-index: 2;
       padding: 0.7em;
@@ -77,7 +84,7 @@
     .content__right {
       width: 100%;
       height: 100%;
-      font-size: ab.$fs-text;
+      font-size: var(--fs-text);
       flex-grow: 1;
       background-color: #000;
       color: ab.$text-1;
@@ -97,11 +104,11 @@
   }
 
   .theater {
-    width: auto;
-    height: calc(100dvh - ab.$height-header);
+    min-width: 100px;
+    height: calc(100dvh - var(--height-header));
     position: fixed;
-    top: ab.$height-header;
-    right: calc(5px - 10vw);
+    top: var(--height-header);
+    right: -100px;
     background-color: ab.$color-ticket;
     transition: right 0.1s linear;
 
@@ -128,17 +135,15 @@
       align-items: center;
       justify-content: center;
       padding-inline: 0.5em;
+      gap: 1em;
       .theater-link {
-        margin-bottom: 0.5em;
-        padding: 3px;
+        display: block;
         font-weight: 700;
         color: ab.$text-2;
         z-index: 3;
         .theater-logo {
-          width: 7vw;
-          height: 7vw;
-          min-width: 50px;
-          min-height: 50px;
+          width: 70px;
+          height: 70px;
           box-shadow: 0 0 10px 0 black;
           border-radius: 100%;
           object-fit: cover;
@@ -146,6 +151,5 @@
       }
     }
   }
-
   /* Bottom */
 }

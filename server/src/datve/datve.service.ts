@@ -1,4 +1,4 @@
-import { ConsoleLogger, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { responseCreatetor } from '@/base';
 import { GheService } from '@src/ghe/ghe.service';
@@ -39,6 +39,8 @@ export class DatVeService {
       responseCreatetor(res, 200, 'Danh sách ghế trống', []);
 
     let jwt = verifyToken(body.token);
+
+    console.log(jwt['id']);
 
     let arrayProsmise = body.danh_sach_ma_ghe.map(async (item) => {
       let res = await this._prisma.datVe.findMany({
