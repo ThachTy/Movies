@@ -1,0 +1,8 @@
+{
+  "button": {
+    "*": "Chọn",
+    "login": "Đăng Nhập",
+    "signup": "Đăng Ký",
+    "register": "Đăng Ký"
+  }
+}

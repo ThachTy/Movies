@@ -1,44 +1,43 @@
 import logo from "@assets/image/icon-popcorn-svgrepo-com copy.svg";
 import { Link, NavLink } from "react-router-dom";
-import { useState, MouseEvent, useEffect } from 'react'
+import { useState, MouseEvent, useEffect, useContext } from 'react'
 import { Avatar, Button, MenuItem, Menu } from '@mui/material';
+import { useTranslation } from 'react-i18next'
 /* */
 import { detailsUser } from '@config/api/user';
 import { getSessionStorage } from '@base/index';
 import { LOGIN_STORAGE_KEY } from '@base/constant';
+import { AuthContext } from '@context/AuthContext'
 import "./header.css";
 
 function Header() {
+  const { t } = useTranslation(["header"]);
   const [user, setUser] = useState<any>(null);
+
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  let token = getSessionStorage(LOGIN_STORAGE_KEY);
+  const { handleLogout, token }: any = useContext(AuthContext);
 
   useEffect(() => {
+    let newToken = getSessionStorage(LOGIN_STORAGE_KEY) ?? token;
     const fetchDetailUser = async () => {
-      token && await detailsUser(token).then(res => {
+      newToken && await detailsUser(newToken).then(res => {
         setUser(res.data)
       })
     }
     fetchDetailUser();
-  }, [token]
+  }, [token, getSessionStorage(LOGIN_STORAGE_KEY)]
   )
 
   const handleOpenMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   }
 
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const handleLogOut = () => {
-    sessionStorage.removeItem('login');
-    window.location.href = "/login";
-  }
-
 
   return (
     <header id="header">
@@ -55,14 +54,14 @@ function Header() {
               <NavLink className={({ isActive }) => {
                 return isActive ? "navs-link active" : "navs-link";
               }} to={"/ticket"}>
-                <i className="fa-solid fa-ticket mr-1"></i>  Buy Tickets
+                <i className="fa-solid fa-ticket fa-fade mr-2"></i>  {t('buy')}
               </NavLink>
             </li>
             <li className="navs-items">
               <NavLink className={({ isActive }) => {
                 return isActive ? "navs-link active" : "navs-link";
               }} to={"/"}>
-                <i className="fa-solid fa-ticket mr-1"></i>  Movies & Shows
+                <i className="fa-solid fa-film fa-shake mr-2"></i>{t('movie')}
               </NavLink>
             </li>
 
@@ -70,21 +69,21 @@ function Header() {
               <NavLink className={({ isActive }) => {
                 return isActive ? "navs-link active" : "navs-link";
               }} to={"/suppport"}>
-                <i className="fa-solid fa-headset mr-1"></i>  Support
+                <i className="fa-solid fa-headset fa-shake mr-2"></i>  {t('suport')}
               </NavLink>
             </li>
             <li className="navs-items">
               <NavLink className={({ isActive }) => {
                 return isActive ? "navs-link active" : "navs-link";
               }} to={"/signup"}>
-                <i className="fa-solid fa-user-plus mr-1"></i>Subscriptions
+                <i className="fa-solid fa-user-plus fa-shake mr-2"></i>{t('subcription')}
               </NavLink>
             </li>
             {!user && <li className="navs-items">
               <NavLink className={({ isActive }) => {
                 return isActive ? "navs-link active" : "navs-link";
               }} to={"/login"}>
-                <i className="fa-regular fa-address-card mr-1"></i>  Login
+                <i className="fa-regular fa-address-card fa-shake mr-2"></i>  {t('login')}
               </NavLink>
             </li>}
           </ul>
@@ -131,7 +130,7 @@ function Header() {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
               <MenuItem><i className="fa-regular fa-id-card mr-2"></i>Profile</MenuItem>
               <MenuItem><i className="fa-solid fa-ticket mr-2"></i>Ticket</MenuItem>
-              <MenuItem onClick={handleLogOut}> <i className="fa-solid fa-right-from-bracket mr-2"></i>Log Out</MenuItem>
+              <MenuItem onClick={handleLogout}> <i className="fa-solid fa-right-from-bracket mr-2"></i>Log Out</MenuItem>
             </Menu>
           </div>}
         </div>

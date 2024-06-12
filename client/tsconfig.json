@@ -24,7 +24,11 @@
       "@templates/*": ["src/templates/*"],
       "@layouts/*": ["src/layouts/*"],
       "@base/*": ["src/base/*"],
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@i18n/*": ["src/i18n/*"],
+      "@locales/en/*": ["src/locales/en/*"],
+      "@locales/vn/*": ["src/locales/vn/*"],
+      "@context/*": ["src/context/*"]
     },
 
     /* Linting */

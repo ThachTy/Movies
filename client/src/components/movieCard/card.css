@@ -69,5 +69,6 @@
     letter-spacing: 0.1em;
     padding-inline: 0.5em;
     writing-mode: horizontal-tb;
+    font-size: var(--fs-text);
   }
 }/*# sourceMappingURL=card.css.map */

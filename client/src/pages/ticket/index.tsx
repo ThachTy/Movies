@@ -63,7 +63,7 @@ function TicketPage() {
                             <Swiper className='w-full h-full' breakpoints={{ 500: { slidesPerView: 2 }, 768: { slidesPerView: 3 }, 1024: { slidesPerView: 5 } }} >
                                 {
                                     rapPhim[0] && rapPhim.map((item: any, index: number) => {
-                                        return <SwiperSlide className='flex-grow'>
+                                        return <SwiperSlide className='flex-grow' key={`swiper-${index}`}>
                                             <FormControlLabel
                                                 style={{ margin: 0 }}
                                                 onChange={() => handelChangeRapPhim(item?.ma_lich_chieu, item?.RapPhim.Ghe, item?.gia_ve)}

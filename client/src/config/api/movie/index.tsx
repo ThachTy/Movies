@@ -13,5 +13,10 @@ const lichChieuTheoPhim = async (maPhim: string | undefined) => {
     return await http.get(`/LichChieu/LayDanhSachLichChieuTheoMaPhim`, { params: { ma_phim: maPhim } }).then(res => res.data);
 }
 
+const timKiemPhim = async (value: string) => {
+    return await http.get(`/Phim/TimKiemPhim`, { params: { timKiem: value } }).then(res => res.data);
+}
 
-export { danhSachPhim, thongTinPhim, lichChieuTheoPhim }
+
+
+export { danhSachPhim, thongTinPhim, lichChieuTheoPhim, timKiemPhim }

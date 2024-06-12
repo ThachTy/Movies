@@ -35,7 +35,7 @@ function Payment() {
             .then((res: any) => {
                 dispatch(setNoficationAction({ isOpen: true, message: res.message, error: false }))
                 setTimeout(() => {
-                    // window.location.reload();
+                    window.location.reload();
                 }, 2000)
             }
             ).catch(err => {

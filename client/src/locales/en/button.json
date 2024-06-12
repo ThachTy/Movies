@@ -1,0 +1,8 @@
+{
+  "button": {
+    "*": "Click",
+    "login": "Login",
+    "signup": "Sign Up",
+    "register": "Register"
+  }
+}

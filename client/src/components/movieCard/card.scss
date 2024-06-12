@@ -12,6 +12,8 @@
     }
 
     .card-heading {
+      // text-wrap: nowrap;
+
       color: var(--color-primary);
     }
 
@@ -75,6 +77,7 @@
       letter-spacing: 0.1em;
       padding-inline: 0.5em;
       writing-mode: horizontal-tb;
+      font-size: var(--fs-text);
     }
   }
 }

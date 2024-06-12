@@ -18,7 +18,7 @@ $radius-1: 5px;
 $radius-2: 0.2em;
 $fs-title: 2.5em;
 $fs-text: 14px;
-$height-header: fit-content;
+$height-header: 92px;
 
 :root {
   --color-theme: $text-1;
@@ -29,6 +29,11 @@ $height-header: fit-content;
   --height-header: 90px;
   --padding-inline: 2em;
   --padding-block: 0.5em;
+
+  :has(#checkbox-theme:checked) {
+    --color-theme: black;
+    --background-theme: white;
+  }
 
   @media (prefers-color-scheme: dark) {
     --color-theme: white;

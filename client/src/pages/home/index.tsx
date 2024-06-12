@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import MoviesTemplate from "@templates/MoviesTemplate";
 import { danhSachPhim } from '@config/api/movie'
-
 
 function HomePages() {
   const [movies, setMoives] = useState([])

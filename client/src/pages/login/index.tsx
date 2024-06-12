@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,15 +10,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom'
-import { login } from '@config/api/user'
-import { setSessionStorage } from '@base/index';
-import { LOGIN_STORAGE_KEY } from '@base/constant';
 import { useForm, Controller } from 'react-hook-form';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '@base/constant';
-import { setNoficationAction } from '@config/reducer/noficationReducer';
-import { useDispatch } from 'react-redux';
-import { FormLabel } from '@mui/material';
-
+import { AuthContext } from '@context/AuthContext'
 
 
 function Copyright(props: any) {
@@ -38,35 +32,14 @@ function Copyright(props: any) {
 
 export default function SignIn() {
     const { handleSubmit, control, formState: { errors } } = useForm();
-    const dispatch = useDispatch();
+    const { handleLogin }: any = useContext(AuthContext)
+
     useEffect(() => {
         document.querySelector("#login-form")?.scrollIntoView();
     }, []
     )
 
-    const onSubmit = async (data: any) => {
-        console.log(data)
-        try {
-            await login(data).then(res => {
-                if (res.token) {
-                    res.token && setSessionStorage(res.token, LOGIN_STORAGE_KEY);
-                    dispatch(setNoficationAction({ isOpen: true, message: res.message, error: false }));
-                    setTimeout(() => {
-                        window.location.href = "/"
-                    }, 1000)
-                }
-            }).catch((error) => {
-                let { message } = error.response.data;
-                dispatch(setNoficationAction({ isOpen: true, message: message, error: true }));
-            })
-        }
-        catch (error) {
-            console.error({ error })
-        }
-    };
-
     return (
-
         <Container id='login-form' component="main" maxWidth="xs">
             <CssBaseline />
             <Box
@@ -83,9 +56,12 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit(handleLogin)} sx={{ mt: 1 }}>
                     {/* Email */}
-                    <Controller name='email' control={control} rules={{ required: "Email is required", pattern: { value: EMAIL_REGEX, message: 'Email is incorect' } }}
+                    <Controller
+                        name='email'
+                        control={control}
+                        rules={{ required: "Email is required", pattern: { value: EMAIL_REGEX, message: 'Email is incorect' } }}
                         render={({ field }) =>
                             <TextField
                                 {...field}

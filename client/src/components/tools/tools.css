@@ -1,0 +1,108 @@
+:root {
+  --color-theme: $text-1;
+  --color-primary: #fe4938;
+  --background-theme: $bg-1;
+  --color-white-1: #fff;
+  --fs-text: 1rem;
+  --height-header: 90px;
+  --padding-inline: 2em;
+  --padding-block: 0.5em;
+}
+:root :has(#checkbox-theme:checked) {
+  --color-theme: black;
+  --background-theme: white;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-theme: white;
+    --background-theme: black;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-theme: black;
+    --background-theme: white;
+  }
+}
+@media screen and (max-width: 992px) {
+  :root {
+    --fs-text: 14px;
+    --padding-inline: 1.5em;
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    --fs-text: 12px;
+    --padding-inline: 2em;
+  }
+}
+@media screen and (max-width: 500px) {
+  :root {
+    --fs-text: 10px;
+    --padding-inline: 2em;
+  }
+}
+
+#tools {
+  height: auto;
+  width: auto;
+  position: fixed;
+  left: 0;
+  top: 50%;
+  z-index: 9;
+  border-radius: 5px;
+  background-color: #404040;
+  text-align: center;
+}
+#tools .tools-content {
+  width: 100%;
+  display: grid;
+  margin-inline: auto;
+  padding: 5px 7px;
+}
+#tools .tools-content .tools-items {
+  width: 30px;
+  height: 30px;
+  display: block;
+  color: var(--color-theme);
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  text-align: center;
+  margin-block: 0.2em;
+  border-radius: 100%;
+  border: 1px solid white;
+}
+#tools .tools-content .tools-items .lbl-checkbox .fa-solid {
+  font-size: vars(--fs-text);
+}
+#tools .tools-content .tools-items .lbl-checkbox .fa-solid.fa-cloud-sun {
+  color: gold;
+}
+#tools .tools-content .tools-items .lbl-checkbox .fa-solid.fa-cloud-moon {
+  color: aquamarine;
+}
+#tools .tools-content .tools-items.tools-flags .lbl-checkbox #checkbox-lan {
+  display: grid;
+  grid-template-areas: "stack";
+}
+#tools .tools-content .tools-items.tools-flags .lbl-checkbox .tools-flags-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-area: stack;
+}
+#tools .tools-content .tools-items .btn-tools-search {
+  font-size: var(--fs-text);
+}
+
+@keyframes transform-tools-icons {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}/*# sourceMappingURL=tools.css.map */

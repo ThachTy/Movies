@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNoficationAction } from '@config/reducer/noficationReducer';
 import { useEffect } from 'react';
+import { debounce } from '@base/index'
 
 
 
@@ -47,19 +48,19 @@ export default function SignUp() {
     }, []
     )
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = debounce(async (data: any) => {
         try {
-            let response = await signup(data).catch(error => {
+            await signup(data[0]).catch(error => {
                 throw error;
             }).then(res => {
-                setSessionStorage(response.token, 'login');
-                dispatch(setNoficationAction({ isOpen: true, message: response.message, error: false }));
+                setSessionStorage(res.token, 'login');
+                dispatch(setNoficationAction({ isOpen: true, message: res.message, error: false }));
                 setTimeout(() => {
-                    navigate("/")
+                    window.location.href = "/";
                 }, 2000)
                 return res
             }).catch((err) => {
-                console.log(err)
+                console.error(err)
                 let { message } = err.response.data;
                 dispatch(setNoficationAction({ isOpen: true, message: message, error: true }));
             })
@@ -68,7 +69,7 @@ export default function SignUp() {
             console.error(error)
         }
 
-    };
+    }, 1000);
 
     return (
         <ThemeProvider theme={defaultTheme}>

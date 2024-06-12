@@ -9,6 +9,10 @@
   --padding-inline: 2em;
   --padding-block: 0.5em;
 }
+:root :has(#checkbox-theme:checked) {
+  --color-theme: black;
+  --background-theme: white;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --color-theme: white;
