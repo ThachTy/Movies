@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom'
 import { useForm, Controller } from 'react-hook-form';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '@base/constant';
 import { AuthContext } from '@context/AuthContext'
-
+import LoginGoogle from '@components/loginGoogle'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 function Copyright(props: any) {
     return (
@@ -37,86 +38,94 @@ export default function SignIn() {
     useEffect(() => {
         document.querySelector("#login-form")?.scrollIntoView();
     }, []
+
+
     )
 
     return (
-        <Container id='login-form' component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <i className="fa-solid fa-user"></i>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit(handleLogin)} sx={{ mt: 1 }}>
-                    {/* Email */}
-                    <Controller
-                        name='email'
-                        control={control}
-                        rules={{ required: "Email is required", pattern: { value: EMAIL_REGEX, message: 'Email is incorect' } }}
-                        render={({ field }) =>
-                            <TextField
-                                {...field}
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                            />}>
-                    </Controller>
-                    {/* Password */}
-                    <Controller name='password' control={control} rules={{ required: 'Password is required', pattern: { value: PASSWORD_REGEX, message: 'Password has at least one uppercase letter, at least one number, and is at least 8 characters long' } }}
-                        render={({ field }) =>
-                            <TextField
-                                {...field}
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />}>
-                    </Controller>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                    >
-                        Sign In
-                    </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link to="#">
-                                Forgot password?
-                            </Link>
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_KEY_APP_GOOGLE} >
+            <Container id='login-form' component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <i className="fa-solid fa-user"></i>
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                    <Box component="form" noValidate onSubmit={handleSubmit(handleLogin)} sx={{ mt: 1 }}>
+
+
+
+                        {/* Email */}
+                        <Controller
+                            name='email'
+                            control={control}
+                            rules={{ required: "Email is required", pattern: { value: EMAIL_REGEX, message: 'Email is incorect' } }}
+                            render={({ field }) =>
+                                <TextField
+                                    {...field}
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                />}>
+                        </Controller>
+                        {/* Password */}
+                        <Controller name='password' control={control} rules={{ required: 'Password is required', pattern: { value: PASSWORD_REGEX, message: 'Password has at least one uppercase letter, at least one number, and is at least 8 characters long' } }}
+                            render={({ field }) =>
+                                <TextField
+                                    {...field}
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                />}>
+                        </Controller>
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Sign In
+                        </Button>
+                        <LoginGoogle></LoginGoogle>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link to="#">
+                                    Forgot password?
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link to="/signup">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Link to="/signup">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    </Box>
                 </Box>
-            </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
-        </Container>
+                <Copyright sx={{ mt: 8, mb: 4 }} />
+            </Container>
+        </GoogleOAuthProvider>
     );
 }

@@ -4,6 +4,7 @@ import { LOGIN_STORAGE_KEY } from '@base/constant';
 import { login } from '@config/api/user';
 import { useDispatch } from 'react-redux';
 import { setNoficationAction } from '@config/reducer/noficationReducer';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export type UserType = {
     email: string;
@@ -51,7 +52,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         sessionStorage.removeItem(LOGIN_STORAGE_KEY);
         window.location.href = "/login";
     }
-    return <AuthContext.Provider value={{ token, user, handleLogin, handleLogout }}>{children}</AuthContext.Provider>
+    return <GoogleOAuthProvider clientId={import.meta.env.VITE_KEY_APP_GOOGLE}>
+        <AuthContext.Provider value={{ token, user, handleLogin, handleLogout }}>{children}</AuthContext.Provider>
+    </GoogleOAuthProvider>
 }
 
 

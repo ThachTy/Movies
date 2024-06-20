@@ -16,7 +16,7 @@ type PropsChildrenType = {
     handleClose: () => void;
 }
 
-const Children = ({ handleClose }: PropsChildrenType) => {
+const ModalContent = ({ handleClose }: PropsChildrenType) => {
     const [movies, setMovies] = useState([])
     const listMoviesRef = useRef([])
 
@@ -87,11 +87,13 @@ function SearchMovies() {
     const { open, handleClose }: any = useContext(SearchMoviesContext);
 
     return (
-        <Modal open={open} onClose={handleClose}
-            children={<Children handleClose={handleClose}></Children>}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description">
-        </Modal>
+        <>
+            <Modal open={open} onClose={handleClose}
+                children={<ModalContent handleClose={handleClose}></ModalContent>}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description">
+            </Modal>
+        </>
     )
 }
 
