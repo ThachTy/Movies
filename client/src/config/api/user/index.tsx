@@ -1,3 +1,4 @@
+import axios from "axios";
 import http from "@config/http";
 
 const login = async ({ email, password }: { email: string | undefined, password: string | undefined }): Promise<any> => {
@@ -13,4 +14,10 @@ const detailsUser = async (token: string) => {
 }
 
 
-export { login, signup, detailsUser };
+const loginGoogle = async (response: any) => {
+  return await axios.get("https://www.googleapis.com/oauth2/v2/userinfo", { headers: { Authorization: `${response.token_type} ${response.access_token}` } })
+}
+
+
+
+export { login, signup, detailsUser, loginGoogle };
